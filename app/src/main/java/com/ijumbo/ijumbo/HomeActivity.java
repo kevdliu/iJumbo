@@ -4,6 +4,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.GridView;
+import android.widget.Toast;
 
 
 public class HomeActivity extends ActionBarActivity {
@@ -12,6 +17,18 @@ public class HomeActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        GridView gridView = (GridView) findViewById(R.id.tiles);
+
+        HomeAdapter adapter = new HomeAdapter(this);
+        gridView.setAdapter(adapter);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Toast.makeText(HomeActivity.this, "YYYAAASSSSS", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
