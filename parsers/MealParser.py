@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from flask import Flask
 
 app = Flask(__name__)
@@ -35,17 +34,17 @@ def getMeal(date,dining_hall):
     
     
 @app.route("/dining-hall/dewick")
-def hello():
+def dewick():
     today = datetime.date.today()
     return getMeal(today,'Dewick-MacPhie+Dining+Center')
     
 @app.route("/dining-hall/hodgdon")
-def hello():
+def hodgdon():
     today = datetime.date.today()
     return getMeal(today,'Hodgdon+Good-+To-+Go+Take-+Out')
     
 @app.route("/dining-hall/carm")
-def hello():
+def carm():
     today = datetime.date.today()
     return getMeal(today,'Carmichael+Dining+Center')
 
