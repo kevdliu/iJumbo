@@ -27,7 +27,7 @@ def getMeal(date,dining_hall):
         json += '{\"menu-section\" : { \"category\": \"'+each+'\", \"items\" : \"'+text_array[idx].replace('\n',',')+'\" }},'
       json = json[:-1]
       json+=']},'
-  if json=='[{':
+  if json=='{\"meal\" : [':
     return '{}'
   json = json[:-1]
   json+=']}'
