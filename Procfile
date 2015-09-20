@@ -1,1 +1,1 @@
-web: python ./parsers/MealParser.py
+web: python MealParser.py
