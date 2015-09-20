@@ -14,7 +14,8 @@ def getMeal(mealname):
     print text_array
     json = '['
     for idx,each in enumerate(name_array):
-      json += '{ category: '+each+', items : '+text_array[idx].replace('\n',',')+' },'
+      json += '{ \"category\": \"'+each+'\", \"items\" : \"'+text_array[idx].replace('\n',',')+'\" },'
+    json = json[:-1]
     json+=']'
     print json
 
