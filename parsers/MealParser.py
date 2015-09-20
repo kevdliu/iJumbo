@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 port = int(os.environ.get('PORT', 5000))
 
 def getMeal(date,dining_hall):
-  url = 'http://menus.tufts.edu/foodpro/shortmenu.asp?sName=TUFTS+DINING&locationNum=11&locationName='+dining_hall+'&dtdate='+date.strftime('%m/%d/%y')
+  url = 'http://menus.tufts.edu/foodpro/shortmenu.asp?sName=TUFTS+DINING&locationNum='+dining_hall+'&dtdate='+date.strftime('%m/%d/%y')
   print url
   response = urllib2.urlopen(url)
   soup = BeautifulSoup(response, 'html.parser')
@@ -36,17 +36,17 @@ def getMeal(date,dining_hall):
 @app.route("/dining-hall/dewick")
 def dewick():
     today = datetime.date.today()
-    return getMeal(today,'Dewick-MacPhie+Dining+Center')
+    return getMeal(today,'11')
     
 @app.route("/dining-hall/hodgdon")
 def hodgdon():
     today = datetime.date.today()
-    return getMeal(today,'Hodgdon+Good-+To-+Go+Take-+Out')
+    return getMeal(today,'14')
     
 @app.route("/dining-hall/carm")
 def carm():
     today = datetime.date.today()
-    return getMeal(today,'Carmichael+Dining+Center')
+    return getMeal(today,'09')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=port)
