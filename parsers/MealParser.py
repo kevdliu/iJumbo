@@ -12,7 +12,7 @@ def getMeal(date,dining_hall):
   print url
   response = urllib2.urlopen(url)
   soup = BeautifulSoup(response, 'html.parser')
-  json = '{'
+  json = '{\"meal\" : ['
   meals = ['Breakfast','Lunch','Dinner']
   for meal_name in meals:
     for elem in soup(text=re.compile(meal_name)):
@@ -22,7 +22,7 @@ def getMeal(date,dining_hall):
       name_array = []
       name_array = re.findall("(?s)(?<=\n--\s)(.+?)(?=\s--\n)",text_menu)
       text_array = re.findall("(?s)(?<=--\n)(.+?)(?=\n--|$)",text_menu)
-      json += '\"meal\" : { \"meal-name\" : \"'+meal_name+'\", \"menu\" : ['
+      json +=  '{ \"meal-name\" : \"'+meal_name+'\", \"menu\" : ['
       for idx,each in enumerate(name_array):
         json += '{\"menu-section\" : { \"category\": \"'+each+'\", \"items\" : \"'+text_array[idx].replace('\n',',')+'\" }},'
       json = json[:-1]
@@ -30,7 +30,7 @@ def getMeal(date,dining_hall):
   if json=='[{':
     return '{}'
   json = json[:-1]
-  json+='}'
+  json+=']}'
   return json
     
     
