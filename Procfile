@@ -1,1 +1,1 @@
-web: gunicorn parsers.MealParser
+web: python ./parsers/MealParser.py
