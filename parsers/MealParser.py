@@ -5,6 +5,8 @@ app = Flask(__name__)
 import re, urllib2, os, json, datetime
 from bs4 import BeautifulSoup
 
+port = int(os.environ.get('PORT', 5000))
+
 def getMeal(date,dining_hall):
   url = 'http://menus.tufts.edu/foodpro/shortmenu.asp?sName=TUFTS+DINING&locationNum=11&locationName='+dining_hall+'&dtdate='+date.strftime('%m/%d/%y')
   print url
