@@ -33,10 +33,20 @@ def getMeal(date,dining_hall):
     
     
     
-@app.route("/")
+@app.route("/dining-hall/dewick")
 def hello():
     today = datetime.date.today()
     return getMeal(today,'Dewick-MacPhie+Dining+Center')
+    
+@app.route("/dining-hall/hodgdon")
+def hello():
+    today = datetime.date.today()
+    return getMeal(today,'Hodgdon+Good-+To-+Go+Take-+Out')
+    
+@app.route("/dining-hall/carm")
+def hello():
+    today = datetime.date.today()
+    return getMeal(today,'Carmichael+Dining+Center')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=port)
