@@ -9,39 +9,32 @@ import java.util.ArrayList;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
 
-    public static String WEB_FRAGMENT = "web";
+    private Bundle mBundle;
+    private ArrayList<String> mTitles;
 
-    private ArrayList<Bundle> mBundles = new ArrayList<Bundle>();
-    private int mCount;
-
-    public PagerAdapter(FragmentManager fm, ArrayList<Bundle> bundles, int count) {
+    public PagerAdapter(FragmentManager fm, ArrayList<String> titles, Bundle bundle) {
         super(fm);
-        mBundles = bundles;
-        mCount = count;
+        mBundle = bundle;
+        mTitles = titles;
     }
 
     @Override
     public Fragment getItem(int i) {
-        Bundle b = mBundles.get(i);
+        Fragment fragment = new ListFragment();;
 
-        Fragment fragment;
-        if (b.getBoolean(WEB_FRAGMENT)) {
-            fragment = new WebFragment();
-        } else {
-            fragment = new ListFragment();
-        }
-
-        fragment.setArguments(mBundles.get(i));
+        Bundle b = new Bundle();
+        b.putStringArrayList(ListFragment.DATA, mBundle.getStringArrayList(DiningActivity.ACROSS[i]));
+        fragment.setArguments(b);
         return fragment;
     }
 
     @Override
     public int getCount() {
-        return mCount;
+        return mTitles.size();
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return "Page " + (position + 1);
+        return mTitles.get(position);
     }
 }

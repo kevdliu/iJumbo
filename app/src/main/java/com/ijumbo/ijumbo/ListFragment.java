@@ -5,12 +5,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
+import com.ijumbo.ijumbo.hlv.HeaderListView;
 
 public class ListFragment extends Fragment {
 
-    public static String ROWS = "rows";
-    public static String HEADERS = "headers";
+    public static final String DATA = "data";
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -19,7 +19,13 @@ public class ListFragment extends Fragment {
                 R.layout.list_fragment, container, false);
 
         Bundle args = getArguments();
-        ((TextView) rootView.findViewById(R.id.text)).setText(args.getString("ARG"));
+        HeaderListView list = (HeaderListView) rootView.findViewWithTag("HLVF");
+        list.setClickable(true);
+
+        DiningListAdapter adapter = new DiningListAdapter(getActivity(),
+                args.getStringArrayList(DATA));
+        list.setAdapter(adapter);
+
         return rootView;
     }
 }

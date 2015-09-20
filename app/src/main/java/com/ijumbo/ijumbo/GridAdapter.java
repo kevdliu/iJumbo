@@ -52,10 +52,9 @@ public class GridAdapter extends BaseAdapter {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         if (convertView == null) {
-            grid = new View(mContext);
             grid = inflater.inflate(R.layout.tile_main, null);
         } else {
-            grid = (View) convertView;
+            grid = convertView;
         }
 
         LinearLayout ll = (LinearLayout) grid.findViewById(R.id.ll);

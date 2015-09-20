@@ -1,6 +1,5 @@
 package com.ijumbo.ijumbo;
 
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.MenuItem;
@@ -11,9 +10,9 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
-public class TransportationActivity extends FragmentActivity {
+public class NewsActivity extends FragmentActivity {
 
-    private static final String MAP_URL = "https://m.tufts.edu/transit/route?feed=transit_doublemap&direction=loop&agency=tufts&route=3";
+    private static final String NEWS_URL = "http://www.tuftsdaily.com";
 
     private WebView mWeb;
 
@@ -40,7 +39,7 @@ public class TransportationActivity extends FragmentActivity {
 
             @Override
             public void onProgressChanged(WebView view, int progress) {
-                if(progress < 100 && bar.getVisibility() == ProgressBar.GONE) {
+                if (progress < 100 && bar.getVisibility() == ProgressBar.GONE) {
                     bar.setVisibility(ProgressBar.VISIBLE);
                 }
 
@@ -51,7 +50,7 @@ public class TransportationActivity extends FragmentActivity {
                 }
             }
         });
-        mWeb.loadUrl(MAP_URL);
+        mWeb.loadUrl(NEWS_URL);
     }
 
     private class MyBrowser extends WebViewClient {

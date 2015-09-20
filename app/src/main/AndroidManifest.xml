@@ -3,6 +3,8 @@
     package="com.ijumbo.ijumbo" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +13,7 @@
 
         <activity
             android:name=".HomeActivity"
-            android:label="@string/app_name" >
+            android:label="Home" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,7 +28,17 @@
 
         <activity
             android:name=".TransportationActivity"
-            android:label="Dining" >
+            android:label="Transportation" >
+        </activity>
+
+        <activity
+            android:name=".CalendarActivity"
+            android:label="Events" >
+        </activity>
+
+        <activity
+            android:name=".NewsActivity"
+            android:label="News" >
         </activity>
     </application>
 
