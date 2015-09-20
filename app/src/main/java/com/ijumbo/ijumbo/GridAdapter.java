@@ -15,12 +15,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class HomeAdapter extends BaseAdapter {
-    private Context mContext;
-    private final String[] mTitles = {"News", "Locations", "Dining", "Events", "Transportation", "Links"};
-    private final int[] mImg = {R.mipmap.news, R.mipmap.locations, R.mipmap.dining, R.mipmap.events, R.mipmap.transportation, R.mipmap.links};
+public class GridAdapter extends BaseAdapter {
 
-    public HomeAdapter(Context c) {
+    private Context mContext;
+
+    private String[] mTitles;
+    private int[] mImg;
+    private int mRows;
+
+    public GridAdapter(Context c, String[] titles, int[] img, int rows) {
+        mTitles = titles;
+        mImg = img;
+        mRows = rows;
         mContext = c;
     }
 
@@ -61,7 +67,7 @@ public class HomeAdapter extends BaseAdapter {
 
         View activityContent = ((Activity) mContext).getWindow().findViewById(Window.ID_ANDROID_CONTENT);
         int titleHeight = activityContent.getBottom() - activityContent.getTop();
-        grid.setMinimumHeight(titleHeight / 3);
+        grid.setMinimumHeight(titleHeight / mRows);
 
         return grid;
     }
